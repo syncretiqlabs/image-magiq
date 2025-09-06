@@ -38,7 +38,7 @@ WEBP_EFFORT=4
 2) Build and run
 
 ```
-docker build -t image-magiq .
+docker build -f docker/Dockerfile -t image-magiq .
 docker run --rm -p 3000:3000 --env-file .env image-magiq
 ```
 
@@ -129,10 +129,28 @@ Options:
   - `MAX_UPLOAD_MB` per your use-cases (10–20 MB typical)
   - `RATE_LIMIT_MAX` to curb abuse
 
+## Docker Compose
+
+The repo includes `docker/docker-compose.yml` for easy runs on a VPS.
+
+1) Create `.env` at the repo root (copy from `.env.example`). If you want persistent on-disk caching, set `CACHE_DIR=/cache`.
+
+2) Start the service:
+
+```
+docker compose -f docker/docker-compose.yml up -d --build
+```
+
+3) View logs / stop:
+
+```
+docker compose -f docker/docker-compose.yml logs -f
+docker compose -f docker/docker-compose.yml down
+```
+
 ## Dev
 
 ```
 npm install
 npm run dev
 ```
-

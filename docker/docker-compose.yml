@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  image-magiq:
+    image: image-magiq:latest
+    container_name: image-magiq
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    env_file:
+      - ../.env
+    ports:
+      - "${PORT:-3000}:3000"
+    restart: unless-stopped
+    # Optional disk cache: set CACHE_DIR=/cache in .env to enable
+    volumes:
+      - cache:/cache
+
+volumes:
+  cache:
+
