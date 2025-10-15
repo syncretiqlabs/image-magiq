@@ -5,7 +5,8 @@
   "description": "Lightweight image converter API and CLI to convert JPG/PNG to WebP",
   "main": "src/server.js",
   "bin": {
-    "convert-dir": "bin/convert-dir.js"
+    "convert-dir": "bin/convert-dir.js",
+    "batch-convert": "bin/batch-convert.js"
   },
   "scripts": {
     "start": "node src/server.js",

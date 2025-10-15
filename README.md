@@ -109,15 +109,51 @@ Recommendation: leave disabled for one-off conversions or when your app stores t
 
 ## CLI (Batch Convert)
 
-Convert a whole folder to WebP:
+### Option 1: Batch Convert with Output Directory (Recommended)
 
+Convert a folder and save to a separate output directory:
+
+```bash
+node bin/batch-convert.js ./images --quality 80 --concurrency 4
 ```
-npm start --prefix . --silent # installs not needed for CLI
+
+This creates `./images-output` with all converted WebP files while preserving folder structure.
+
+With custom output directory:
+```bash
+node bin/batch-convert.js "/path/to/photos" --output ./converted --quality 90
+```
+
+Convert only a random subset (e.g., 25 out of 100 images):
+```bash
+node bin/batch-convert.js ./images --limit 25 --quality 85
+```
+
+Options:
+- `--output`, `--limit`, `--quality`, `--lossless`, `--width`, `--height`, `--fit`, `--stripMetadata`, `--force`, `--concurrency`
+
+### Option 2: In-Place Conversion (Original Script)
+
+Convert in the same folder (saves .webp alongside originals):
+
+```bash
 node bin/convert-dir.js ./images --quality 80 --concurrency 4
 ```
 
 Options:
 - `--quality`, `--lossless`, `--width`, `--height`, `--fit`, `--stripMetadata`, `--force`, `--concurrency`
+
+---
+
+## Complete Guide
+
+For detailed documentation including:
+- Step-by-step setup instructions
+- Authentication configuration
+- API integration examples (JavaScript, Python, cURL)
+- Advanced usage and troubleshooting
+
+**See [GUIDE.md](GUIDE.md) for the complete guide.**
 
 ## Deployment Notes
 
